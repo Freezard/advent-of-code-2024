@@ -24,8 +24,10 @@ func day3_2() {
 	for _, match := range matches {
 		if match[0] == "don't()" {
 			multiplyEnabled = false
+			continue
 		} else if match[0] == "do()" {
 			multiplyEnabled = true
+			continue
 		}
 
 		if multiplyEnabled {
