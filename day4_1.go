@@ -60,7 +60,7 @@ func searchRight(row int, col int) {
 }
 
 func searchLeft(row int, col int) {
-	if col-3 <= 0 {
+	if col-3 < 0 {
 		return
 	}
 
