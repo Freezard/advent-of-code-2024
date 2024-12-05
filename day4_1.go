@@ -7,11 +7,12 @@ import (
 	"os"
 )
 
-var searchField [][]string
 var searchWord = "XMAS"
 var totalWords = 0
 
 func day4_1() {
+	var searchField [][]string
+
 	file, err := os.Open("day4-input.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -31,14 +32,14 @@ func day4_1() {
 	for i, row := range searchField {
 		for j := range row {
 			if searchField[i][j] == string(searchWord[0]) {
-				searchRight(i, j)
-				searchLeft(i, j)
-				searchUp(i, j)
-				searchDown(i, j)
-				searchRightUp(i, j)
-				searchRightDown(i, j)
-				searchLeftUp(i, j)
-				searchLeftDown(i, j)
+				searchRight(searchField, i, j)
+				searchLeft(searchField, i, j)
+				searchUp(searchField, i, j)
+				searchDown(searchField, i, j)
+				searchRightUp(searchField, i, j)
+				searchRightDown(searchField, i, j)
+				searchLeftUp(searchField, i, j)
+				searchLeftDown(searchField, i, j)
 			}
 		}
 	}
@@ -46,7 +47,7 @@ func day4_1() {
 	fmt.Println(totalWords)
 }
 
-func searchRight(row int, col int) {
+func searchRight(searchField [][]string, row int, col int) {
 	if col+3 >= len(searchField[row]) {
 		return
 	}
@@ -59,7 +60,7 @@ func searchRight(row int, col int) {
 	totalWords += 1
 }
 
-func searchLeft(row int, col int) {
+func searchLeft(searchField [][]string, row int, col int) {
 	if col-3 < 0 {
 		return
 	}
@@ -72,7 +73,7 @@ func searchLeft(row int, col int) {
 	totalWords += 1
 }
 
-func searchUp(row int, col int) {
+func searchUp(searchField [][]string, row int, col int) {
 	if row-3 < 0 {
 		return
 	}
@@ -85,7 +86,7 @@ func searchUp(row int, col int) {
 	totalWords += 1
 }
 
-func searchDown(row int, col int) {
+func searchDown(searchField [][]string, row int, col int) {
 	if row+3 >= len(searchField[col]) {
 		return
 	}
@@ -98,7 +99,7 @@ func searchDown(row int, col int) {
 	totalWords += 1
 }
 
-func searchRightUp(row int, col int) {
+func searchRightUp(searchField [][]string, row int, col int) {
 	if col+3 >= len(searchField[row]) || row-3 < 0 {
 		return
 	}
@@ -111,7 +112,7 @@ func searchRightUp(row int, col int) {
 	totalWords += 1
 }
 
-func searchRightDown(row int, col int) {
+func searchRightDown(searchField [][]string, row int, col int) {
 	if col+3 >= len(searchField[row]) || row+3 >= len(searchField[col]) {
 		return
 	}
@@ -124,7 +125,7 @@ func searchRightDown(row int, col int) {
 	totalWords += 1
 }
 
-func searchLeftUp(row int, col int) {
+func searchLeftUp(searchField [][]string, row int, col int) {
 	if col-3 < 0 || row-3 < 0 {
 		return
 	}
@@ -137,7 +138,7 @@ func searchLeftUp(row int, col int) {
 	totalWords += 1
 }
 
-func searchLeftDown(row int, col int) {
+func searchLeftDown(searchField [][]string, row int, col int) {
 	if col-3 < 0 || row+3 >= len(searchField[col]) {
 		return
 	}
