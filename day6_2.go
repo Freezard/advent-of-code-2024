@@ -19,7 +19,6 @@ func day6_2() {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	yPos := 0
 	for scanner.Scan() {
 		line := scanner.Text()
 		row := []string{}
@@ -27,7 +26,6 @@ func day6_2() {
 			row = append(row, string(char))
 		}
 		mapLayout = append(mapLayout, row)
-		yPos++
 	}
 
 	startPosition = findStartPosition(mapLayout)
