@@ -50,18 +50,16 @@ func day8_1() {
 					continue
 				}
 
+				if cityMap[mirroredPos.Y][mirroredPos.X] == "#" {
+					continue
+				}
+
 				cityMap[mirroredPos.Y][mirroredPos.X] = "#"
+
+				antinodeUniqueLocations++
 			}
 		}
 
-	}
-
-	for i := range cityMap {
-		for j := range cityMap[i] {
-			if cityMap[i][j] == "#" {
-				antinodeUniqueLocations += 1
-			}
-		}
 	}
 
 	fmt.Println(antinodeUniqueLocations)
